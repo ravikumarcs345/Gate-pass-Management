@@ -1,0 +1,87 @@
+[
+    {
+        "name":"gsm",
+        "price":20,
+        "description":"this is a rayon cloth",
+        "rating":3,
+        "images":[
+            {
+                "filename":"ravi.jpg"
+            }
+        ],
+        "category":"rayon",
+        "seller":"amzone",
+        "stock":30,
+        "numOfReview":3,
+        "reviews":[]
+    
+    },
+    {
+        "name":"gsm",
+        "price":20,
+        "description":"this is a rayon cloth",
+        "rating":3,
+        "images":[
+            {
+                "filename":"ravi.jpg"
+            }
+        ],
+        "category":"rayon",
+        "seller":"amzone",
+        "stock":30,
+        "numOfReview":3,
+        "reviews":[]
+    
+    },
+    {
+        "name":"gsm",
+        "price":20,
+        "description":"this is a rayon cloth",
+        "rating":3,
+        "images":[
+            {
+                "filename":"ravi.jpg"
+            }
+        ],
+        "category":"rayon",
+        "seller":"amzone",
+        "stock":30,
+        "numOfReview":3,
+        "reviews":[]
+    
+    },
+    {
+        "name":"gsm",
+        "price":20,
+        "description":"this is a rayon cloth",
+        "rating":3,
+        "images":[
+            {
+                "filename":"ravi.jpg"
+            }
+        ],
+        "category":"rayon",
+        "seller":"amzone",
+        "stock":30,
+        "numOfReview":3,
+        "reviews":[]
+    
+    },
+    {
+        "name":"gsm",
+        "price":20,
+        "description":"this is a rayon cloth",
+        "rating":3,
+        "images":[
+            {
+                "filename":"ravi.jpg"
+            }
+        ],
+        "category":"rayon",
+        "seller":"amzone",
+        "stock":30,
+        "numOfReview":3,
+        "reviews":[]
+    
+    }
+]

@@ -16,11 +16,10 @@ class Apifeatures {
     filter() {
         const queryStrCopy = { ...this.queryStr }
         const removeStr = ['keyword', 'limit', 'page']
-
         removeStr.forEach(field => delete queryStrCopy[field])
 
-        let querystr = JSON.stringify(queryStrCopy)
-        let queryStr = querystr.replace(/\b(gt|gte|lt|lte)/g, match => `$${match}`)
+        let queryStr = JSON.stringify(queryStrCopy)
+         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)/g, match => `$${match}`)
 
         this.query.find(JSON.parse(queryStr))
         return this;

@@ -16,12 +16,12 @@ const modelSchema=new mongoose.Schema({
         required:[true,"Enter the products description"]
     },
     rating:{
-        type:Number,
+        type:String,
         default:0
     },
     images:[
         {
-            filename:{
+            image:{
                 type:String,
                 required:true
             }
@@ -32,7 +32,7 @@ const modelSchema=new mongoose.Schema({
         required:[true, "Please enter category"],
         enum:{
             values:[
-                'rayon','fabric','cloth','gsm'                            
+                'Cotton','Rayon','Canvas','Handloom-Fabrics','Canvas-Cotton','Rayon-Melange'                            
             ],
             message:"Please select correct category"
         }      
@@ -44,17 +44,20 @@ const modelSchema=new mongoose.Schema({
     stock:{
         type:Number,
         required:[true,"Please enter stock"],
-        maxlength:[5,"products stock cannot exceed 5"]
+        maxlength:[20,"products stock cannot exceed 20"]
     },
     numOfReviews:{
         type:Number,
         default:0
     },
+    user:{
+        type:mongoose.Schema.Types.ObjectId
+    },
     reviews:[
         {
-            name:{
-                type:String,
-                required:true
+            user:{
+                type:mongoose.Schema.Types.ObjectId,
+                ref: 'users'
             },
             rating:{
                 type:String,
@@ -65,7 +68,10 @@ const modelSchema=new mongoose.Schema({
                 required:true
             }
         }
-    ]
+    ], createdAt:{
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const product=mongoose.model('products',modelSchema)

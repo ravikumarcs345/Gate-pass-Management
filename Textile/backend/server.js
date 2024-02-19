@@ -1,8 +1,6 @@
 const app=require('./app')
-const dotenv=require('dotenv')
-const path=require('path')
+
 const dbConnection=require("./config/database")
-dotenv.config({path:path.join(__dirname,'config/config.env')})
 
 dbConnection()
 
@@ -19,7 +17,7 @@ process.on('unhandledRejection',(err)=>{
 })
 
 process.on('uncaughtException',(err)=>{
-    console.log(`Error: ${err.message}`)
+    console.log(`Error: ${err.message}`) 
     console.log("server shuttiing down dude to unCaughtException")
     server.close(()=>{
         process.exit(1)

@@ -1,85 +1,105 @@
 [
     {
-        "name":"gsm",
-        "price":20,
+        "name":"Cotton Plain power Looms Fabrics, Packaging Type: Lump, GSM: 100-150 GSM",
+        "price":58,
+        "description":"We are engaged in offering an exclusive array of Cotton Fabric. Offered fabric is well-woven using the finest grade material and newest machines. The provided fabric is highly applauded by our valued patrons owing to its appealing designs and mesmerizing patterns. The offered fabric is rigorously tested by vendors’ adept quality specialists against various quality measures. Patrons can avail the provided fabric from us at the most competitive prices.Features:Unique designsEye catchy patternSeamless finish, Minimum 600",
+        "rating":3,
+        "images":[
+            {
+                "filename":"/images/products/Cotton_Plain_powerloom_Fabric.jpg"
+            }
+        ],
+        "category":"Cotton",
+        "seller":"Supthagiri Textile",
+        "stock":100000,
+        "numOfReview":3,
+        "reviews":[]
+    
+    },
+    {
+        "name":"48 Inch Powerloom Canvas Fabric",
+        "price":53,
         "description":"this is a rayon cloth",
         "rating":3,
         "images":[
             {
-                "filename":"ravi.jpg"
+                "filename":"/images/products/48-inch-powerloom-canvas-fabric.webp"
             }
         ],
-        "category":"rayon",
-        "seller":"amzone",
+        "category":"Canvas",
+        "seller":"Supthagiri Textile",
         "stock":30,
         "numOfReview":3,
         "reviews":[]
     
     },
     {
-        "name":"gsm",
+        "name":"Power Loom Grey Cotton Fabrics G-34, Plain/Solids, Gray",
         "price":20,
-        "description":"this is a rayon cloth",
+        "description":"Power Loom Grey Cotton Fabrics G-34, Plain/Solids, Gray, Minimmum 5000 meter",
         "rating":3,
         "images":[
             {
-                "filename":"ravi.jpg"
+                "filename":"/images/products/powerloom_grey_cotton_fabrics.jpeg"
             }
         ],
-        "category":"rayon",
-        "seller":"amzone",
-        "stock":30,
+        "category":"Handloom-Fabrics",
+        "seller":"Supthagiri Textile",
+        "stock":100000,
         "numOfReview":3,
         "reviews":[]
     
     },
     {
-        "name":"gsm",
+        "name":"Pure Cotton Grey Fabric, Plain",
         "price":20,
-        "description":"this is a rayon cloth",
+        "description":"Pure Cotton Grey Fabric, Plain, minimum 500 meter",
         "rating":3,
         "images":[
             {
-                "filename":"ravi.jpg"
+                "filename":"/images/products/pure_cotton_grey_fabric.webp"
             }
         ],
-        "category":"rayon",
-        "seller":"amzone",
-        "stock":30,
+        "category":"Cotton",
+        "seller":"Supthagiri Textile",
+        "stock":100000,
         "numOfReview":3,
         "reviews":[]
     
     },
     {
-        "name":"gsm",
-        "price":20,
-        "description":"this is a rayon cloth",
+        "name":"Plain Cotton Canvas Fabric, Plain/Solids, Gray",
+        "price":80,
+        "description":"We are reckoned as a reputed Manufacturer of Plain Canvas Fabrics, Polyester Fabrics, Cotton Fabrics, Twill & Drill Fabrics, etc. The products provided by us are made with industry set norms with the help of sophisticated technology.Minimum 500 Meter",
         "rating":3,
         "images":[
             {
-                "filename":"ravi.jpg"
+                "filename":"/images/products/canvas_cotton_fabric.webp"
+            },
+            {
+                "filename":"/images/products/canvas_cotton_fabric_1.webp"
             }
         ],
-        "category":"rayon",
-        "seller":"amzone",
-        "stock":30,
+        "category":"Canvas-Cotton",
+        "seller":"Supthagiri Textile",
+        "stock":100000,
         "numOfReview":3,
         "reviews":[]
     
     },
     {
-        "name":"gsm",
-        "price":20,
-        "description":"this is a rayon cloth",
+        "name":"Plain Rayon Melange Fabric, For Clothing",
+        "price":66,
+        "description":"We are engaged in offering Plain Rayon Melange Fabric to our clients. Our range of all products is widely appreciated by our clients.",
         "rating":3,
         "images":[
             {
-                "filename":"ravi.jpg"
+                "filename":"/images/products/plain_rayon_melange_fabric.jpg"
             }
         ],
-        "category":"rayon",
-        "seller":"amzone",
-        "stock":30,
+        "category":"Rayon-Melange",
+        "seller":"Supthagiri Textile",
+        "stock":100000,
         "numOfReview":3,
         "reviews":[]
     

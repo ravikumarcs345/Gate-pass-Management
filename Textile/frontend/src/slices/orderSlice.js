@@ -4,7 +4,7 @@ const orderSlice = createSlice({
     name: 'order',
     initialState: {
         orderDetail: {},
-        userOrders : [],
+        userOrders: [],
         adminOrders: [],
         loading: false,
         isOrderDeleted: false,
@@ -158,7 +158,7 @@ const orderSlice = createSlice({
 
 const { actions, reducer } = orderSlice;
 
-export const { 
+export const {
     createOrderFail,
     createOrderSuccess,
     createOrderRequest,
@@ -180,6 +180,6 @@ export const {
     updateOrderSuccess,
     clearOrderDeleted,
     clearOrderUpdated
- } = actions;
+} = actions;
 
 export default reducer;

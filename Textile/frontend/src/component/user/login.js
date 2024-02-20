@@ -1,11 +1,11 @@
-import {Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  clearAuthError, login } from '../../actions/userActions';
+import { clearAuthError, login } from '../../actions/userActions';
 import MetaData from '../layout/metaData';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
- export default function Login() {
+export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const dispatch = useDispatch();
@@ -13,67 +13,67 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
     const location = useLocation();
 
     const { loading, error, isAuthenticated } = useSelector(state => state.authState)
-    const redirect = location.search?'/'+location.search.split('=')[1]:'/';
+    const redirect = location.search ? '/' + location.search.split('=')[1] : '/';
 
-    const  submitHandler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
         dispatch(login(email, password))
     }
 
     useEffect(() => {
-        if(isAuthenticated) {
+        if (isAuthenticated) {
             navigate(redirect)
         }
 
-        if(error)  {
+        if (error) {
             toast(error, {
                 position: toast.POSITION.TOP_RIGHT,
                 type: 'error',
-                onOpen: ()=> { dispatch(clearAuthError) }
+                onOpen: () => { dispatch(clearAuthError) }
             })
             return
         }
-    },[error, isAuthenticated, dispatch, navigate,redirect])
+    }, [error, isAuthenticated, dispatch, navigate, redirect])
 
     return (
         <Fragment>
             <MetaData title={`Login`} />
-            <div className="row wrapper"> 
+            <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form onSubmit={submitHandler} className="shadow-lg">
                         <h1 className="mb-3">Login</h1>
                         <div className="form-group">
-                        <label htmlFor="email_field">Email</label>
-                        <input
-                            type="email"
-                            id="email_field"
-                            className="form-control"
-                            value={email}
-                            onChange={e =>setEmail(e.target.value)}
-                        />
+                            <label htmlFor="email_field">Email</label>
+                            <input
+                                type="email"
+                                id="email_field"
+                                className="form-control"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
                         </div>
-            
+
                         <div className="form-group">
-                        <label htmlFor="password_field">Password</label>
-                        <input
-                            type="password"
-                            id="password_field"
-                            className="form-control"
-                            value={password}
-                            onChange={e =>setPassword(e.target.value)}
-                        />
+                            <label htmlFor="password_field">Password</label>
+                            <input
+                                type="password"
+                                id="password_field"
+                                className="form-control"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
                         </div>
 
                         <Link to="/password/forgot" className="pull-right mt-2 text-primary">Forgot Password?</Link>
                         <button
-                        id="login_button"
-                        type="submit"
-                        className="btn btn-block w-100 mt-4  "
-                        disabled={loading}
+                            id="login_button"
+                            type="submit"
+                            className="btn btn-block w-100 mt-4  "
+                            disabled={loading}
                         >
-                        LOGIN
+                            LOGIN
                         </button>
-                        
+
                         <Link to="/register" className="pull-right mt-2 text-primary">New User?</Link>
                     </form>
                 </div>

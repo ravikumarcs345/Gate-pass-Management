@@ -1,28 +1,28 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword, clearAuthError } from '../../actions/userActions';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function ResetPassword() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const dispatch = useDispatch();
-    const { isAuthenticated, error }  = useSelector(state => state.authState)
+    const { isAuthenticated, error } = useSelector(state => state.authState)
     const navigate = useNavigate();
     const { token } = useParams();
 
-    const submitHandler  = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('password', password);
         formData.append('confirmPassword', confirmPassword);
-        
+
         dispatch(resetPassword(formData, token))
     }
 
-    useEffect(()=> {
-        if(isAuthenticated) {
+    useEffect(() => {
+        if (isAuthenticated) {
             toast('Password Reset Success!', {
                 type: 'success',
                 position: toast.POSITION.BOTTOM_CENTER
@@ -30,15 +30,15 @@ export default function ResetPassword() {
             navigate('/')
             return;
         }
-        if(error)  {
+        if (error) {
             toast(error, {
                 position: toast.POSITION.BOTTOM_CENTER,
                 type: 'error',
-                onOpen: ()=> { dispatch(clearAuthError) }
+                onOpen: () => { dispatch(clearAuthError) }
             })
             return
         }
-    },[isAuthenticated, error, dispatch, navigate])
+    }, [isAuthenticated, error, dispatch, navigate])
 
     return (
         <div className="row wrapper">

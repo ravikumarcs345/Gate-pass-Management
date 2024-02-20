@@ -7,10 +7,10 @@ const crypto = require('crypto')
 
 // UserRegister - api/v1/register
 exports.registerUser = catchAsyncError(async (req, res, next) => {
-    const { name, email, password} = req.body
+    const { name, email, password } = req.body
     let avatar;
-    if(req.file){
-        avatar=`${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
+    if (req.file) {
+        avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
     }
     const user = await userModel.create({ name, email, password, avatar })
     if (!user) {
@@ -140,9 +140,9 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
         email: req.body.email
     }
     let avatar;
-    if(req.file){
-        avatar=`${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
-        newUserData={...newUserData,avatar}
+    if (req.file) {
+        avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
+        newUserData = { ...newUserData, avatar }
     }
     const user = await userModel.findByIdAndUpdate(req.user.id, newUserData, {
         new: true,
@@ -158,48 +158,48 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
 exports.getAllUsers = catchAsyncError(async (req, res, next) => {
     const users = await userModel.find()
     res.status(200).json({
-        success:true,
+        success: true,
         users
     })
 })
 
 //Admin: get Specific user - api/v1/getuser
-exports.getOneUser=catchAsyncError( async(req,res,next)=>{
-        const user= await userModel.findById(req.params.id)
-        if(!user){
-            return next(new ErrorHandler(`user not found with this id: ${req.params.id}`,404))
-        }
-        res.status(200).json({
-            success:true,
-            user
-        })
+exports.getOneUser = catchAsyncError(async (req, res, next) => {
+    const user = await userModel.findById(req.params.id)
+    if (!user) {
+        return next(new ErrorHandler(`user not found with this id: ${req.params.id}`, 404))
+    }
+    res.status(200).json({
+        success: true,
+        user
+    })
 })
 
 //Admin: update user - api/v1/updateuser
-exports.updateUser=catchAsyncError( async(req,res,next)=>{
-        const updateuser={
-            name:req.body.name,
-            email:req.body.email,
-            role:req.body.role
-        }
-        const user=await userModel.findByIdAndUpdate(req.params.id,updateuser,{
-            new:true,
-            runValidators:true
-        })
-        res.status(200).json({
-            success:true,
-            user
-        })
+exports.updateUser = catchAsyncError(async (req, res, next) => {
+    const updateuser = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+    const user = await userModel.findByIdAndUpdate(req.params.id, updateuser, {
+        new: true,
+        runValidators: true
+    })
+    res.status(200).json({
+        success: true,
+        user
+    })
 })
 
 //Admin: delete User - api/v1/deleteuser
-exports.deleteuser=catchAsyncError(async(req,res,next)=>{
-        const user=await userModel.findById(req.params.id)
-        if(!user){
-            return next(new ErrorHandler(`user not found with this id ${req.params.id}`,400))
-        }
-        await user.deleteOne()
-        res.status(200).json({
-            success:true
-        })
+exports.deleteuser = catchAsyncError(async (req, res, next) => {
+    const user = await userModel.findById(req.params.id)
+    if (!user) {
+        return next(new ErrorHandler(`user not found with this id ${req.params.id}`, 400))
+    }
+    await user.deleteOne()
+    res.status(200).json({
+        success: true
+    })
 })

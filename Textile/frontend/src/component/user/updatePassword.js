@@ -1,10 +1,10 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { updatePassword as updatePasswordAction, clearAuthError } from '../../actions/userActions';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 export default function UpdatePassword() {
-    
+
     const [password, setPassword] = useState("");
     const [oldPassword, setOldPassword] = useState("");
     const dispatch = useDispatch();
@@ -17,10 +17,10 @@ export default function UpdatePassword() {
         formData.append('password', password);
         dispatch(updatePasswordAction(formData))
     }
- 
+
     useEffect(() => {
-        if(isUpdated) {
-            toast('Password updated successfully',{
+        if (isUpdated) {
+            toast('Password updated successfully', {
                 type: 'success',
                 position: toast.POSITION.BOTTOM_CENTER
             })
@@ -28,15 +28,15 @@ export default function UpdatePassword() {
             setPassword("")
             return;
         }
-        if(error)  {
+        if (error) {
             toast(error, {
                 position: toast.POSITION.BOTTOM_CENTER,
                 type: 'error',
-                onOpen: ()=> { dispatch(clearAuthError) }
+                onOpen: () => { dispatch(clearAuthError) }
             })
             return
         }
-    },[isUpdated, error, dispatch])
+    }, [isUpdated, error, dispatch])
 
     return (
         <div className="row wrapper">
@@ -50,7 +50,7 @@ export default function UpdatePassword() {
                             id="old_password_field"
                             className="form-control"
                             value={oldPassword}
-                            onChange={e=>setOldPassword(e.target.value)}
+                            onChange={e => setOldPassword(e.target.value)}
                         />
                     </div>
 
@@ -61,7 +61,7 @@ export default function UpdatePassword() {
                             id="new_password_field"
                             className="form-control"
                             value={password}
-                            onChange={e=>setPassword(e.target.value)}
+                            onChange={e => setPassword(e.target.value)}
                         />
                     </div>
 

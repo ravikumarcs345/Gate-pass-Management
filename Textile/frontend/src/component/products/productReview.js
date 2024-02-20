@@ -1,4 +1,4 @@
-export default function ProductReview({reviews}) {
+export default function ProductReview({ reviews }) {
     return (
         <div class="reviews w-75" >
             <h3>Other's Reviews:</h3>
@@ -6,7 +6,7 @@ export default function ProductReview({reviews}) {
             {reviews && reviews.map(review => (
                 <div key={review._id} class="review-card my-3">
                     <div class="rating-outer">
-                        <div class="rating-inner" style={{width: `${review.rating/5*100}%`}}></div>
+                        <div class="rating-inner" style={{ width: `${review.rating / 5 * 100}%` }}></div>
                     </div>
                     <p class="review_user">By: {review.user.name}</p>
                     <p class="review_comment">Review: {review.comment}</p>
@@ -15,7 +15,7 @@ export default function ProductReview({reviews}) {
                 </div>
             ))
             }
-           
+
         </div>
     )
 }

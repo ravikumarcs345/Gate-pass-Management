@@ -76,7 +76,7 @@ const Product = () => {
         }
 
 
-    }, [dispatch, id, isReviewSubmitted, error])
+    }, [dispatch, id, isReviewSubmitted,product._id, error])
     return (
         <>
             {loading ? <Loader /> :
@@ -98,20 +98,16 @@ const Product = () => {
                             <p id="product_id">Product # {product._id} </p>
 
                             <hr />
-
                             <div className="rating-outer">
                                 <div className="rating-inner" style={{ width: `${product.rating / 5 * 100}%` }}></div>
-                            </div>
+                                </div>
                             <span id="no_of_reviews" >({product.numOfReviews} Reviews)</span>
 
                             <hr />
-
                             <p id="product_price">Price: {product.price} <span >/Meter</span></p>
                             <div className="stockCounter d-inline">
                                 <span className="btn btn-danger minus" onClick={decreaseQty}>-</span>
-
                                 <input type="number" className="form-control count d-inline" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-
                                 <span className="btn btn-primary plus" onClick={increaseQty}>+</span>
                             </div>
                             <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4"
@@ -119,11 +115,9 @@ const Product = () => {
                                 disabled={product.stock === 0 ? true : false}>Add to Cart</button>
 
                             <hr />
-
                             <p>Status: <span className={product.stock > 0 ? 'greenColor' : 'redColor'} >{product.stock > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
 
                             <hr />
-
                             <h4 className="mt-2">Description:</h4>
                             <p>{product.description}</p>
                             <hr />
@@ -156,15 +150,11 @@ const Product = () => {
                                                     ))
                                                 }
 
-
                                             </ul>
-
                                             <textarea onChange={(e) => setComment(e.target.value)} name="review" id="review" className="form-control mt-3">
-
                                             </textarea>
                                             <button disabled={loading} onClick={reviewHandler} aria-label="Close" className="btn my-3 float-right review-btn px-4 text-white">Submit</button>
                                         </Modal.Body>
-
                                     </Modal>
                                 </div>
                             </div>

@@ -44,11 +44,10 @@ export default function OrderDetail() {
                                         </div>
                                     </div>
                                 ))}
-
                             </div>
+
                             <hr />
                             <h6 className="my-5">Order # {orderDetail._id}</h6>
-
                             <h4 className="mb-4">Shipping Info</h4>
                             <p><b>Name:</b> {user.name}</p>
                             <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
@@ -56,16 +55,10 @@ export default function OrderDetail() {
                             <p><b>Amount:</b> ${totalPrice}</p>
 
                             <hr />
-
                             <h4 className="my-4">Payment</h4>
                             <p className={isPaid ? 'greenColor' : 'redColor'} ><b>{isPaid ? 'PAID' : 'NOT PAID'}</b></p>
-
-
                             <h4 className="my-4">Order Status:</h4>
                             <p className={orderStatus && orderStatus.includes('Delivered') ? 'greenColor' : 'redColor'} ><b>{orderStatus}</b></p>
-
-
-
                         </div>
                     </div>
                 </Fragment>

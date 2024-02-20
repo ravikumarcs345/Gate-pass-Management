@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteReview, getReviews } from "../../actions/productActions"
 import { clearError, clearReviewDeleted } from "../../slices/productSlice"
 import Loader from '../layout/loader';
-import { MDBDataTable} from 'mdbreact';
-import {toast } from 'react-toastify'
+import { MDBDataTable } from 'mdbreact';
+import { toast } from 'react-toastify'
 import Sidebar from "./sidebar"
 
 export default function ReviewList() {
-    const { reviews = [], loading = true, error, isReviewDeleted }  = useSelector(state => state.productState)
+    const { reviews = [], loading = true, error, isReviewDeleted } = useSelector(state => state.productState)
     const [productId, setProductId] = useState("");
     const dispatch = useDispatch();
 
     const setReviews = () => {
         const data = {
-            columns : [
+            columns: [
                 {
                     label: 'ID',
                     field: 'id',
@@ -42,15 +42,15 @@ export default function ReviewList() {
                     sort: 'asc'
                 }
             ],
-            rows : []
+            rows: []
         }
 
-        reviews.forEach( review => {
+        reviews.forEach(review => {
             data.rows.push({
                 id: review._id,
                 rating: review.rating,
-                user : review.user.name,
-                comment: review.comment ,
+                user: review.user.name,
+                comment: review.comment,
                 actions: (
                     <Fragment>
                         <Button onClick={e => deleteHandler(e, review._id)} className="btn btn-danger py-1 px-2 ml-2">
@@ -69,22 +69,22 @@ export default function ReviewList() {
         dispatch(deleteReview(productId, id))
     }
 
-    const submitHandler = (e) =>{
+    const submitHandler = (e) => {
         e.preventDefault();
         dispatch(getReviews(productId))
     }
 
     useEffect(() => {
-        if(error) {
+        if (error) {
             toast(error, {
                 position: toast.POSITION.BOTTOM_CENTER,
                 type: 'error',
-                onOpen: ()=> { dispatch(clearError()) }
+                onOpen: () => { dispatch(clearError()) }
             })
             return
         }
-        if(isReviewDeleted) {
-            toast('Review Deleted Succesfully!',{
+        if (isReviewDeleted) {
+            toast('Review Deleted Succesfully!', {
                 type: 'success',
                 position: toast.POSITION.BOTTOM_CENTER,
                 onOpen: () => dispatch(clearReviewDeleted())
@@ -93,47 +93,47 @@ export default function ReviewList() {
             return;
         }
 
-       
-    },[dispatch, error, isReviewDeleted])
+
+    }, [dispatch, error, isReviewDeleted,productId])
 
 
     return (
         <div className="row">
-        <div className="col-12 col-md-2">
-                <Sidebar/>
-        </div>
-        <div className="col-12 col-md-10">
-            <h1 className="my-4">Review List</h1>
-            <div className="row justify-content-center mt-5">
-                <div className="col-5">
-                    <form onSubmit={submitHandler}>
-                        <div className="form-group">
-                            <label >Product ID</label>
-                            <input 
-                                type="text"
-                                onChange= {e => setProductId(e.target.value)}
-                                value={productId}
-                                className="form-control"
-                            />
-                        </div>
-                        <button type="submit" disabled={loading} className="btn btn-primary btn-block py-2">
-                            Search
-                        </button>
-                    </form>
-                </div>
+            <div className="col-12 col-md-2">
+                <Sidebar />
             </div>
-            <Fragment>
-                {loading ? <Loader/> : 
-                    <MDBDataTable
-                        data={setReviews()}
-                        bordered
-                        striped
-                        hover
-                        className="px-3"
-                    />
-                }
-            </Fragment>
+            <div className="col-12 col-md-10">
+                <h1 className="my-4">Review List</h1>
+                <div className="row justify-content-center mt-5">
+                    <div className="col-5">
+                        <form onSubmit={submitHandler}>
+                            <div className="form-group">
+                                <label >Product ID</label>
+                                <input
+                                    type="text"
+                                    onChange={e => setProductId(e.target.value)}
+                                    value={productId}
+                                    className="form-control"
+                                />
+                            </div>
+                            <button type="submit" disabled={loading} className="btn btn-primary btn-block py-2">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <Fragment>
+                    {loading ? <Loader /> :
+                        <MDBDataTable
+                            data={setReviews()}
+                            bordered
+                            striped
+                            hover
+                            className="px-3"
+                        />
+                    }
+                </Fragment>
+            </div>
         </div>
-    </div>
     )
 }

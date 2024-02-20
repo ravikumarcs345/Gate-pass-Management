@@ -13,12 +13,12 @@ exports.isAuthenticateUser = catchAsyncError(async (req, res, next) => {
     next();
 })
 
-exports.isAuthorizeRole=(roles)=>{
-   return (req,res,next)=>{
-            if(!roles.includes(req.user.role)){
-                return next(new ErrorHandler(`This Role ${req.user.role} not Allowed to post Products`,401))
-            }
-            next()
+exports.isAuthorizeRole = (roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return next(new ErrorHandler(`This Role ${req.user.role} not Allowed to post Products`, 401))
+        }
+        next()
     }
 }
 

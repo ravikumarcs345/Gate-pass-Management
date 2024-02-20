@@ -5,41 +5,41 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')): [],
+        items: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
         loading: false,
-        shippingInfo: localStorage.getItem('shippingInfo')? JSON.parse(localStorage.getItem('shippingInfo')): {}
+        shippingInfo: localStorage.getItem('shippingInfo') ? JSON.parse(localStorage.getItem('shippingInfo')) : {}
     },
     reducers: {
-        addCartItemRequest(state, action){
+        addCartItemRequest(state, action) {
             return {
                 ...state,
                 loading: true
             }
         },
-        addCartItemSuccess(state, action){
+        addCartItemSuccess(state, action) {
             const item = action.payload
 
-            const isItemExist = state.items.find( i => i.product === item.product);
-            
-            if(isItemExist) {
+            const isItemExist = state.items.find(i => i.product === item.product);
+
+            if (isItemExist) {
                 state = {
                     ...state,
                     loading: false,
                 }
-            }else{
+            } else {
                 state = {
                     items: [...state.items, item],
                     loading: false
                 }
-                
+
                 localStorage.setItem('cartItems', JSON.stringify(state.items));
             }
             return state
-            
+
         },
         increaseCartItemQty(state, action) {
             state.items = state.items.map(item => {
-                if(item.product === action.payload) {
+                if (item.product === action.payload) {
                     item.quantity = item.quantity + 1
                 }
                 return item;
@@ -49,7 +49,7 @@ const cartSlice = createSlice({
         },
         decreaseCartItemQty(state, action) {
             state.items = state.items.map(item => {
-                if(item.product === action.payload) {
+                if (item.product === action.payload) {
                     item.quantity = item.quantity - 1
                 }
                 return item;
@@ -90,14 +90,14 @@ const cartSlice = createSlice({
 
 const { actions, reducer } = cartSlice;
 
-export const { 
-    addCartItemRequest, 
+export const {
+    addCartItemRequest,
     addCartItemSuccess,
     decreaseCartItemQty,
     increaseCartItemQty,
     removeItemFromCart,
     saveShippingInfo,
     orderCompleted
- } = actions;
+} = actions;
 
 export default reducer;

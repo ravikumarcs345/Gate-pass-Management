@@ -9,20 +9,20 @@ import Pagination from 'react-js-pagination'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const { loading, products,error,productsCount,resPerPage} = useSelector((state) => state.productsState)
-    const[currentPage,setCurrentPage]=useState(1)
+    const { loading, products, error, productsCount, resPerPage } = useSelector((state) => state.productsState)
+    const [currentPage, setCurrentPage] = useState(1)
 
-    const setCurrentPageNo=(pageNo)=>{
+    const setCurrentPageNo = (pageNo) => {
         setCurrentPage(pageNo)
     }
     useEffect(() => {
-        if(error){
-        return toast.error(error, {
-            position: "top-right"
+        if (error) {
+            return toast.error(error, {
+                position: "top-right"
             });
         }
-        dispatch(getProducts(null,null,null,null,currentPage))
-    }, [dispatch,error,currentPage])
+        dispatch(getProducts(null, null, null, null, currentPage))
+    }, [dispatch, error, currentPage])
     return (
         <>
             <Metadata title={'Products'} />
@@ -32,28 +32,27 @@ const Home = () => {
                     <section id="products" className=" container ">
                         <div className="row">
                             {products && products.map(product => (
-                                <Products col={3} key={product._id} product={product}/>
+                                <Products col={3} key={product._id} product={product} />
                             ))}
                         </div>
                     </section>
                     {productsCount > 0 && productsCount > resPerPage ?
-                    <div className='d-flex justify-content-center mt-5'>
-                        <Pagination
-                        activePage={currentPage}
-                        onChange={setCurrentPageNo}
-                        totalItemsCount={productsCount}
-                        itemsCountPerPage={resPerPage}
-                        nextPageText={'Next'}
-                        firstPageText={'First'}
-                        lastPageText={'Last'}
-                        itemClass={'page-item'}
-                        linkClass={'page-link'}
-                        /> 
+                        <div className='d-flex justify-content-center mt-5'>
+                            <Pagination
+                                activePage={currentPage}
+                                onChange={setCurrentPageNo}
+                                totalItemsCount={productsCount}
+                                itemsCountPerPage={resPerPage}
+                                nextPageText={'Next'}
+                                firstPageText={'First'}
+                                lastPageText={'Last'}
+                                itemClass={'page-item'}
+                                linkClass={'page-link'}
+                            />
 
-                    </div>:null}
-                 </>}
-                
-            
+                        </div> : null}
+                </>}
+
         </>
     )
 }

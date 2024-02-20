@@ -5,14 +5,13 @@ const Apifeatures = require('../utils/apiFeatures')
 
 //post products - /api/v1/proucts/new
 exports.newProducts = catchAsyncError(async (req, res, next) => {
-     let images = []
+    let images = []
     let BASE_URL = process.env.BACKEND_URL;
-    if(process.env.NODE_ENV === "production"){
+    if (process.env.NODE_ENV === "production") {
         BASE_URL = `${req.protocol}://${req.get('host')}`
     }
-    
-    if(req.files.length > 0) {
-        req.files.forEach( file => {
+    if (req.files.length > 0) {
+        req.files.forEach(file => {
             let url = `${BASE_URL}/uploads/product/${file.originalname}`;
             images.push({ image: url })
         })
@@ -33,15 +32,13 @@ exports.getProducts = async (req, res, next) => {
     let buildQuery = () => {
         return new Apifeatures(product.find(), req.query).search().filter()
     }
-    
     const filteredProductsCount = await buildQuery().query.countDocuments({})
     const totalProductsCount = await product.countDocuments({});
     let productsCount = totalProductsCount;
 
-    if(filteredProductsCount !== totalProductsCount) {
+    if (filteredProductsCount !== totalProductsCount) {
         productsCount = filteredProductsCount;
     }
-    
     const Products = await buildQuery().paginate(resultpage).query;
 
     res.status(200).json({
@@ -54,7 +51,7 @@ exports.getProducts = async (req, res, next) => {
 
 //get single products - /api/v1/product/:id
 exports.getSingleProducts = async (req, res, next) => {
-    const Product = await product.findById(req.params.id).populate('reviews.user','name email')
+    const Product = await product.findById(req.params.id).populate('reviews.user', 'name email')
     if (!Product) {
         return next(new ErrorHandler('data not found ravi', 404));
     }
@@ -73,41 +70,36 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
     let images = []
 
     //if images not cleared we keep existing images
-    if(req.body.imagesCleared === 'false' ) {
+    if (req.body.imagesCleared === 'false') {
         images = Product.images;
     }
     let BASE_URL = process.env.BACKEND_URL;
-    if(process.env.NODE_ENV === "production"){
+    if (process.env.NODE_ENV === "production") {
         BASE_URL = `${req.protocol}://${req.get('host')}`
     }
 
-    if(req.files.length > 0) {
-        req.files.forEach( file => {
+    if (req.files.length > 0) {
+        req.files.forEach(file => {
             let url = `${BASE_URL}/uploads/product/${file.originalname}`;
             images.push({ image: url })
         })
     }
-
-
     req.body.images = images;
-    
-    if(!Product) {
+
+    if (!Product) {
         return res.status(404).json({
             success: false,
             message: "Product not found"
         });
     }
-
-     Product = await product.findByIdAndUpdate(req.params.id, req.body, {
+    Product = await product.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     })
-
     res.status(200).json({
         success: true,
         Product
     })
-
 })
 
 //delete Products - /api/v1/prducts/:id
@@ -167,13 +159,12 @@ exports.updateReview = catchAsyncError(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-
     })
 })
 
 //Admin : get reviews - api/v1/admin/reviews
-exports.getReviews = catchAsyncError(async (req, res, next) =>{
-    const products = await product.findById(req.query.id).populate('reviews.user','name email')
+exports.getReviews = catchAsyncError(async (req, res, next) => {
+    const products = await product.findById(req.query.id).populate('reviews.user', 'name email')
     res.status(200).json({
         success: true,
         reviews: products.reviews
@@ -181,12 +172,12 @@ exports.getReviews = catchAsyncError(async (req, res, next) =>{
 })
 
 //Delete Review - api/v1/review
-exports.deleteReview = catchAsyncError(async (req, res, next) =>{
+exports.deleteReview = catchAsyncError(async (req, res, next) => {
     const products = await product.findById(req.query.productId);
-    
+
     //filtering the reviews which does match the deleting review id
     const reviews = products.reviews.filter(review => {
-       return review._id.toString() !== req.query.id.toString()
+        return review._id.toString() !== req.query.id.toString()
     });
     //number of reviews 
     const numOfReviews = reviews.length;
@@ -195,7 +186,7 @@ exports.deleteReview = catchAsyncError(async (req, res, next) =>{
     let ratings = reviews.reduce((acc, review) => {
         return review.rating + acc;
     }, 0) / reviews.length;
-    ratings = isNaN(ratings)?0:ratings;
+    ratings = isNaN(ratings) ? 0 : ratings;
 
     //save the product document
     await product.findByIdAndUpdate(req.query.productId, {
@@ -206,12 +197,10 @@ exports.deleteReview = catchAsyncError(async (req, res, next) =>{
     res.status(200).json({
         success: true
     })
-
-
 });
 
 // get admin products  - api/v1/admin/products
-exports.getAdminProducts = catchAsyncError(async (req, res, next) =>{
+exports.getAdminProducts = catchAsyncError(async (req, res, next) => {
     const products = await product.find();
     res.status(200).send({
         success: true,

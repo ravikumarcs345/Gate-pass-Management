@@ -11,7 +11,7 @@ export default function UserOrders () {
 
     useEffect(() => {
         dispatch(userOrdersAction)
-    },[])
+    },[dispatch])
 
     const setOrders = () => {
         const data = {
@@ -44,7 +44,6 @@ export default function UserOrders () {
             ],
             rows:[]
         }
-
         userOrders.forEach(userOrder => {
             data.rows.push({
                 id:  userOrder._id,
@@ -58,11 +57,8 @@ export default function UserOrders () {
                 </Link>
             })
         })
-
         return  data;
     }
-
-
     return (
         <Fragment>
             <MetaData title="My Orders" />

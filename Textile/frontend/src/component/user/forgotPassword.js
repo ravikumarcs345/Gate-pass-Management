@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { forgotPassword,clearAuthError } from "../../actions/userActions";
+import { forgotPassword, clearAuthError } from "../../actions/userActions";
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState("");
@@ -15,8 +15,8 @@ export default function ForgotPassword() {
         dispatch(forgotPassword(formData))
     }
 
-    useEffect(()=>{
-        if(message) {
+    useEffect(() => {
+        if (message) {
             toast(message, {
                 type: 'success',
                 position: toast.POSITION.BOTTOM_CENTER
@@ -25,16 +25,15 @@ export default function ForgotPassword() {
             return;
         }
 
-        if(error)  {
+        if (error) {
             toast(error, {
                 position: toast.POSITION.BOTTOM_CENTER,
                 type: 'error',
-                onOpen: ()=> { dispatch(clearAuthError) }
+                onOpen: () => { dispatch(clearAuthError) }
             })
             return
         }
     }, [message, error, dispatch])
-
 
     return (
         <div className="row wrapper">
@@ -48,7 +47,7 @@ export default function ForgotPassword() {
                             id="email_field"
                             className="form-control"
                             value={email}
-                            onChange={e=>setEmail(e.target.value)}
+                            onChange={e => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -57,7 +56,7 @@ export default function ForgotPassword() {
                         type="submit"
                         className="btn btn-block w-100">
                         Send Email
-                </button>
+                    </button>
 
                 </form>
             </div>

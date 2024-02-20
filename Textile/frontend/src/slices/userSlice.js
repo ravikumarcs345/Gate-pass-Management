@@ -11,114 +11,114 @@ const userSlice = createSlice({
         isUserDeleted: false
     },
     reducers: {
-        usersRequest(state, action){
+        usersRequest(state, action) {
             return {
                 ...state,
                 loading: true
             }
         },
-        usersSuccess(state, action){
+        usersSuccess(state, action) {
             return {
                 ...state,
                 loading: false,
                 users: action.payload.users,
             }
         },
-        usersFail(state, action){
+        usersFail(state, action) {
             return {
                 ...state,
                 loading: false,
-                error:  action.payload
+                error: action.payload
             }
         },
-        userRequest(state, action){
+        userRequest(state, action) {
             return {
                 ...state,
                 loading: true
             }
         },
-        userSuccess(state, action){
+        userSuccess(state, action) {
             return {
                 ...state,
                 loading: false,
                 user: action.payload.user,
             }
         },
-        userFail(state, action){
+        userFail(state, action) {
             return {
                 ...state,
                 loading: false,
-                error:  action.payload
+                error: action.payload
             }
         },
 
-        deleteUserRequest(state, action){
+        deleteUserRequest(state, action) {
             return {
                 ...state,
                 loading: true
             }
         },
-        deleteUserSuccess(state, action){
+        deleteUserSuccess(state, action) {
             return {
                 ...state,
                 loading: false,
-                isUserDeleted : true
+                isUserDeleted: true
             }
         },
-        deleteUserFail(state, action){
+        deleteUserFail(state, action) {
             return {
                 ...state,
                 loading: false,
-                error:  action.payload
+                error: action.payload
             }
         },
-        updateUserRequest(state, action){
+        updateUserRequest(state, action) {
             return {
                 ...state,
                 loading: true
             }
         },
-        updateUserSuccess(state, action){
+        updateUserSuccess(state, action) {
             return {
                 ...state,
                 loading: false,
-                isUserUpdated : true
+                isUserUpdated: true
             }
         },
-        updateUserFail(state, action){
+        updateUserFail(state, action) {
             return {
                 ...state,
                 loading: false,
-                error:  action.payload
+                error: action.payload
             }
         },
-        clearUserDeleted(state, action){
+        clearUserDeleted(state, action) {
             return {
                 ...state,
-                isUserDeleted : false
+                isUserDeleted: false
             }
         },
-        clearUserUpdated(state, action){
+        clearUserUpdated(state, action) {
             return {
                 ...state,
-                isUserUpdated : false
+                isUserUpdated: false
             }
         },
-        clearError(state, action){
+        clearError(state, action) {
             return {
                 ...state,
-                error:  null
+                error: null
             }
         }
-       
+
     }
 });
 
 const { actions, reducer } = userSlice;
 
-export const { 
-    usersRequest, 
-    usersSuccess, 
+export const {
+    usersRequest,
+    usersSuccess,
     usersFail,
     userRequest,
     userSuccess,

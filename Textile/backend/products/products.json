@@ -6,7 +6,7 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/Cotton_Plain_powerloom_Fabric.jpg"
+                "image":"/images/products/Cotton_Plain_powerloom_Fabric.jpg"
             }
         ],
         "category":"Cotton",
@@ -23,7 +23,7 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/48-inch-powerloom-canvas-fabric.webp"
+                "image":"/images/products/48-inch-powerloom-canvas-fabric.webp"
             }
         ],
         "category":"Canvas",
@@ -40,7 +40,7 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/powerloom_grey_cotton_fabrics.jpeg"
+                "image":"/images/products/powerloom_grey_cotton_fabrics.jpeg"
             }
         ],
         "category":"Handloom-Fabrics",
@@ -57,7 +57,7 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/pure_cotton_grey_fabric.webp"
+                "image":"/images/products/pure_cotton_grey_fabric.webp"
             }
         ],
         "category":"Cotton",
@@ -74,10 +74,10 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/canvas_cotton_fabric.webp"
+                "image":"/images/products/canvas_cotton_fabric.webp"
             },
             {
-                "filename":"/images/products/canvas_cotton_fabric_1.webp"
+                "image":"/images/products/canvas_cotton_fabric_1.webp"
             }
         ],
         "category":"Canvas-Cotton",
@@ -94,7 +94,7 @@
         "rating":3,
         "images":[
             {
-                "filename":"/images/products/plain_rayon_melange_fabric.jpg"
+                "image":"/images/products/plain_rayon_melange_fabric.jpg"
             }
         ],
         "category":"Rayon-Melange",

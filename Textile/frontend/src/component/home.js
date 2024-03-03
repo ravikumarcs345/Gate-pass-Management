@@ -5,13 +5,11 @@ import { getProducts } from '../actions/productActions';
 import Loader from './layout/loader';
 import Products from './products/products';
 import { toast } from 'react-toastify';
-import Pagination from 'react-js-pagination'
-
+import Pagination from 'react-js-pagination';
 const Home = () => {
     const dispatch = useDispatch()
     const { loading, products, error, productsCount, resPerPage } = useSelector((state) => state.productsState)
     const [currentPage, setCurrentPage] = useState(1)
-
     const setCurrentPageNo = (pageNo) => {
         setCurrentPage(pageNo)
     }

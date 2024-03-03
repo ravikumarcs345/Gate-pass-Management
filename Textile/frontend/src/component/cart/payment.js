@@ -58,7 +58,7 @@ export default function Payment() {
             return
         }
 
-    }, [shippingInfo,navigate,orderError,dispatch])
+    }, [orderError,dispatch])
 
     const submitHandler = async (e) => {
         e.preventDefault();

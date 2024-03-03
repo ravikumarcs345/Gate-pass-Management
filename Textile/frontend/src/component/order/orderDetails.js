@@ -25,7 +25,7 @@ export default function OrderDetail() {
                             <hr />
                             <div className="cart-item my-1">
                                 {orderItems && orderItems.map(item => (
-                                    <div className="row my-5">
+                                    <div className="row my-5" key={item._id}>
                                         <div className="col-4 col-lg-2">
                                             <img src={item.image} alt={item.name} height="70" width="85" />
                                         </div>

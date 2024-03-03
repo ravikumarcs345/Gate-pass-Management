@@ -7,9 +7,9 @@ export const addCartItem = (id, quantity) => async(dispatch) => {
         const {data } = await axios.get(`/api/v1/product/${id}`)
         dispatch(addCartItemSuccess({
             product: data.Product._id,
-            name: data.Product.name,
+            name:data.Product.name,
             price: data.Product.price,
-            image: data.Product.images[0].filename,
+            image: data.Product.images[0].image,
             stock: data.Product.stock,
             quantity
         }))

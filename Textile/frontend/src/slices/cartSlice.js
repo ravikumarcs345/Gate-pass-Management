@@ -18,7 +18,6 @@ const cartSlice = createSlice({
         },
         addCartItemSuccess(state, action) {
             const item = action.payload
-
             const isItemExist = state.items.find(i => i.product === item.product);
 
             if (isItemExist) {

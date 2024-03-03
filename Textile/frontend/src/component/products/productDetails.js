@@ -18,8 +18,6 @@ const Product = () => {
     const { id } = useParams()
     const [quantity, setQuantity] = useState(1);
 
-
-
     const increaseQty = () => {
         const count = document.querySelector('.count')
         if (product.stock === 0 || count.valueAsNumber >= product.stock) return;
@@ -76,7 +74,7 @@ const Product = () => {
         }
 
 
-    }, [dispatch, id, isReviewSubmitted,product._id, error])
+    }, [dispatch,id,isReviewSubmitted,product._id, error])
     return (
         <>
             {loading ? <Loader /> :
@@ -140,6 +138,7 @@ const Product = () => {
                                                 {
                                                     [1, 2, 3, 4, 5].map(star => (
                                                         <li
+                                                            key={star}
                                                             value={star}
                                                             onClick={() => setRating(star)}
                                                             className={`star ${star <= rating ? 'orange' : ''}`}

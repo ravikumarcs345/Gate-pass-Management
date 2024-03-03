@@ -16,7 +16,6 @@ exports.newProducts = catchAsyncError(async (req, res, next) => {
             images.push({ image: url })
         })
     }
-
     req.body.images = images;
     req.body.user = req.user.id
     const products = await product.create(req.body)
@@ -55,7 +54,7 @@ exports.getSingleProducts = async (req, res, next) => {
     if (!Product) {
         return next(new ErrorHandler('data not found ravi', 404));
     }
-    res.status(201).json({
+    res.status(200).json({
         success: true,
         Product
     })

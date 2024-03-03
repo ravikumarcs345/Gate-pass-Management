@@ -4,12 +4,10 @@ const dbConnection = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-
         .then((con) => {
             console.log(`Database is connected: ${con.connection.host}`)
         })
 
         
-
 }
 module.exports = dbConnection

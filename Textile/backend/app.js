@@ -1,4 +1,5 @@
 const express = require('express')
+
 const app = express()
 const Error = require('./middleware/error')
 const cookieParser = require('cookie-parser')
@@ -18,5 +19,12 @@ app.use('/api/v1', router)
 app.use('/api/v1', authRouter)
 app.use('/api/v1', orderRouter)
 app.use('/api/v1', paymentRouter)
+
+// if(process.env.NODE_ENV ==='production'){
+//     app.use(express.static(path.join(__dirname,'../frontend/build')));
+//     app.get('*',(req,res)=>{
+//         res.sendFile(path.resolve(__dirname,'../frontend/build/index.html'))
+//     })
+// }
 app.use(Error)
 module.exports = app

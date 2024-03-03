@@ -115,7 +115,7 @@ export default function NewProduct() {
                                 <textarea
                                     className="form-control"
                                     id="description_field"
-                                    rows="8"
+                                    rows="5"
                                     onChange={e => setDescription(e.target.value)}
                                     value={description}
                                 ></textarea>

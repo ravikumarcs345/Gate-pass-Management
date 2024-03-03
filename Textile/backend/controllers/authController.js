@@ -9,8 +9,13 @@ const crypto = require('crypto')
 exports.registerUser = catchAsyncError(async (req, res, next) => {
     const { name, email, password } = req.body
     let avatar;
+
+    let BASE_URL=process.env.BACKEND_URL;
+    if(process.env.NODE_ENV === "production"){
+        BASE_URL=`${req.protocol}://${req.get('host')}`
+    }
     if (req.file) {
-        avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
+        avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`
     }
     const user = await userModel.create({ name, email, password, avatar })
     if (!user) {
@@ -59,8 +64,12 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
     const resettoken = user.getresetToken()
     await user.save({ validateBeforeSave: false })
 
+    let BASE_URL=process.env.FRONTEND_URL;
+    if(process.env.NODE_ENV === "production"){
+        BASE_URL=`${req.protocol}://${req.get('host')}`
+    }
     //creating reset url
-    const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resettoken}`
+    const resetUrl = `${BASE_URL}/password/reset/${resettoken}`
     const message = `Your password reset URL as follows \n${resetUrl}\n If you have not request to this email,then ignore it.`
     //error handeling
     try {
@@ -140,8 +149,12 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
         email: req.body.email
     }
     let avatar;
+    let BASE_URL=process.env.BACKEND_URL;
+    if(process.env.NODE_ENV === "production"){
+        BASE_URL=`${req.protocol}://${req.get('host')}`
+    }
     if (req.file) {
-        avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
+        avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`
         newUserData = { ...newUserData, avatar }
     }
     const user = await userModel.findByIdAndUpdate(req.user.id, newUserData, {
